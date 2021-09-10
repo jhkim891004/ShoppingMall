@@ -1,4 +1,4 @@
-package com.cndfactory.shoppingmall.domain.dto.store;
+package com.cndfactory.shoppingmall.domain.dto.shop;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class StoreResponseDtoTest {
+class ShopResponseDtoTest {
 
 	Validator validator;
 
@@ -24,10 +24,10 @@ class StoreResponseDtoTest {
 
 	@DisplayName("매장코드_사이즈_테스트")
 	@Test
-	void Length_Successful_LengthValid() {
-		StoreModifyDto dto = new StoreModifyDto("테스트매장", "SP000001", "Y");
+	void Test_Successful_LengthValid() {
+		ShopModifyDto dto = new ShopModifyDto("테스트매장", "SP000001", "Y");
 
-		Set<ConstraintViolation<StoreModifyDto>> violations = validator.validate(dto);
+		Set<ConstraintViolation<ShopModifyDto>> violations = validator.validate(dto);
 		violations.forEach(violation -> System.out.println(violation.getPropertyPath()+": "+violation.getMessage()));
 
 		assertThat(violations.size()).isZero();

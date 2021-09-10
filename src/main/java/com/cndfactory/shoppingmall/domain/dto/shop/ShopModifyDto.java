@@ -1,6 +1,6 @@
-package com.cndfactory.shoppingmall.domain.dto.store;
+package com.cndfactory.shoppingmall.domain.dto.shop;
 
-import com.cndfactory.shoppingmall.domain.entity.store.Store;
+import com.cndfactory.shoppingmall.domain.entity.shop.Shop;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,20 +11,20 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class StoreModifyDto {
+public class ShopModifyDto {
 	@NotBlank
-	private String storeName;
+	private String shopName;
 	@NotBlank
 	@Size(min = 8, max = 8)
-	private String storeCode;
+	private String shopCode;
 	@NotBlank
 	@Size(min = 1, max = 1)
 	private String useYn;
 
-	public Store toEntity() {
-		return Store.builder()
-				.storeName(this.storeName)
-				.storeCode(this.storeCode)
+	public Shop toEntity() {
+		return Shop.builder()
+				.shopName(this.shopName)
+				.shopCode(this.shopCode)
 				.useYn(this.useYn)
 				.build();
 	}
