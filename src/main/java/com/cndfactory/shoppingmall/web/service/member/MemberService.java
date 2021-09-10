@@ -1,18 +1,14 @@
-package com.cndfactory.shoppingmall.web.service;
+package com.cndfactory.shoppingmall.web.service.member;
 
-import com.cndfactory.shoppingmall.domain.dto.member.MemberLoginDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberResponseDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberSaveDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberUpdateDto;
 import com.cndfactory.shoppingmall.domain.entity.member.Member;
 import com.cndfactory.shoppingmall.domain.entity.member.MemberRepository;
-import com.cndfactory.shoppingmall.utils.security.domain.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

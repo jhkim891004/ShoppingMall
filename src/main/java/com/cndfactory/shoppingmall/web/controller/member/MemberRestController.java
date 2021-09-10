@@ -1,10 +1,8 @@
 package com.cndfactory.shoppingmall.web.controller.member;
 
-import com.cndfactory.shoppingmall.domain.dto.member.MemberLoginDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberResponseDto;
-import com.cndfactory.shoppingmall.domain.dto.member.MemberSaveDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberUpdateDto;
-import com.cndfactory.shoppingmall.web.service.MemberService;
+import com.cndfactory.shoppingmall.web.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

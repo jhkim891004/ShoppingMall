@@ -5,6 +5,7 @@ import com.cndfactory.shoppingmall.domain.dto.member.MemberSaveDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberUpdateDto;
 import com.cndfactory.shoppingmall.domain.entity.member.Member;
 import com.cndfactory.shoppingmall.domain.entity.member.MemberRepository;
+import com.cndfactory.shoppingmall.web.service.member.MemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
