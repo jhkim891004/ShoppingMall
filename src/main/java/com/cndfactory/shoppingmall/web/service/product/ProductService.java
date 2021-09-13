@@ -5,6 +5,8 @@ import com.cndfactory.shoppingmall.domain.dto.product.ProductResponseDto;
 import com.cndfactory.shoppingmall.domain.dto.product.ProductSaveDto;
 import com.cndfactory.shoppingmall.domain.entity.product.Product;
 import com.cndfactory.shoppingmall.domain.entity.product.ProductRepository;
+import com.cndfactory.shoppingmall.domain.entity.shop.Shop;
+import com.cndfactory.shoppingmall.domain.entity.shop.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,12 +14,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.function.Function;
 
 @RequiredArgsConstructor
 @Service
 public class ProductService {
 	private final ProductRepository productRepository;
+	private final ShopRepository shopRepository;
 
 	public ProductResponseDto getOne(Long id) {
 		return productRepository.findById(id)
@@ -26,12 +28,17 @@ public class ProductService {
 	}
 
 	public Page<ProductResponseDto> getAll(Pageable page) {
-		return productRepository.findAll(page).map(new Function<Product, ProductResponseDto>() {
-			@Override
-			public ProductResponseDto apply(Product product) {
-				return product.toDto();
-			}
-		});
+		return productRepository.findAll(page)
+				.map(product -> {
+					return product.toDto();
+				});
+	}
+
+	public Page<ProductResponseDto> getAllByShop(Pageable page, Long shopId) {
+		return productRepository.findAllByShopId(page, shopId)
+				.map(product-> {
+					return product.toDto();
+				});
 	}
 
 	@Transactional
@@ -39,7 +46,12 @@ public class ProductService {
 		Product product = dto.toEntity();
 		product = productRepository.save(product);
 
+		Shop shop = shopRepository.findById(dto.getShopId())
+				.orElseThrow(() -> new NoSuchElementException("Not Found Shop"));
+
+		product.addShop(shop);
 		product.updateProductCode(product.getId());
+
 		return product.toDto();
 	}
 

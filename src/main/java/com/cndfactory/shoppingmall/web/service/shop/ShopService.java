@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.function.Function;
 
 @RequiredArgsConstructor
 @Service
@@ -27,12 +26,10 @@ public class ShopService {
 	}
 
 	public Page<ShopResponseDto> getAll(Pageable page) {
-		return shopRepository.findAll(page).map(new Function<Shop, ShopResponseDto>() {
-			
-			public ShopResponseDto apply(Shop shop) {
-				return shop.toDto();
-			}
-		});
+		return shopRepository.findAll(page)
+				.map(shop -> {
+					return shop.toDto();
+				});
 	}
 
 	@Transactional

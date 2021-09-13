@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.function.Function;
 
 @Slf4j
 @Service
@@ -50,15 +49,13 @@ public class MemberService {
 	 * @return
 	 */
 	public Page<MemberResponseDto> getAll(Pageable pageable) {
-		return memberRepository.findAll(pageable).map(new Function<Member, MemberResponseDto>() {
-			@Override
-			public MemberResponseDto apply(Member member) {
-				return MemberResponseDto.builder()
-						.id(member.getId())
-						.memberId(member.getMemberId())
-						.build();
-			}
-		});
+		return memberRepository.findAll(pageable)
+				.map(member -> {
+					return MemberResponseDto.builder()
+							.id(member.getId())
+							.memberId(member.getMemberId())
+							.build();
+				});
 	}
 
 	/**

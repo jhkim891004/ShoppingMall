@@ -20,8 +20,12 @@ public class Product extends BaseEntity {
 	private String productName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "shopId", updatable = false)
+	@JoinColumn(name = "shopId")
 	private Shop shop;
+
+	public void addShop(Shop shop) {
+		this.shop = shop;
+	}
 
 	public void updateProductCode(Long id) {
 		this.productCode = String.format("PRD%09d", id);
@@ -36,6 +40,7 @@ public class Product extends BaseEntity {
 				.id(this.getId())
 				.productCode(this.productCode)
 				.productName(this.productName)
+				.shop(this.shop)
 				.build();
 	}
 

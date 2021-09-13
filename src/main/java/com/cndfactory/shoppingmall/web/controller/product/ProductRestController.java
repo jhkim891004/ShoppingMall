@@ -31,6 +31,13 @@ public class ProductRestController {
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
+	@GetMapping("/api/v1/{shopId}/products")
+	public ResponseEntity<Page<ProductResponseDto>> getAllByShop(Pageable page, @PathVariable Long shopId) {
+		Page<ProductResponseDto> dto = productService.getAllByShop(page, shopId);
+
+		return new ResponseEntity<>(dto, HttpStatus.OK);
+	}
+
 	@PostMapping("/api/v1/products")
 	public ResponseEntity<ProductResponseDto> save(@RequestBody @Valid ProductSaveDto dto) {
 		ProductResponseDto responseDto = productService.save(dto);

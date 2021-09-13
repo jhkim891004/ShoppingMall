@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ProductSaveDto {
+	private Long shopId;
 	private String productCode;
 	private String productName;
 
