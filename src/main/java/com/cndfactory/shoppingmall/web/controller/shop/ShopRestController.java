@@ -21,9 +21,6 @@ public class ShopRestController {
 
 	@GetMapping("/api/v1/shops/{id}")
 	public ResponseEntity<ShopResponseDto> getOne(@PathVariable Long id) throws BusinessException {
-		// 테스트01 먼저 반영
-		// 테스트02 반영
-		// merge 충돌 병합 테스트
 		return new ResponseEntity<ShopResponseDto>(shopService.getOne(id), HttpStatus.OK);
 	}
 
