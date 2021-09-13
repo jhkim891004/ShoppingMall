@@ -25,7 +25,7 @@ class ShopResponseDtoTest {
 	@DisplayName("매장코드_사이즈_테스트")
 	@Test
 	void Test_Successful_LengthValid() {
-		ShopModifyDto dto = new ShopModifyDto("테스트매장", "SP000001", "Y");
+		ShopModifyDto dto = new ShopModifyDto(1L,"테스트매장");
 
 		Set<ConstraintViolation<ShopModifyDto>> violations = validator.validate(dto);
 		violations.forEach(violation -> System.out.println(violation.getPropertyPath()+": "+violation.getMessage()));

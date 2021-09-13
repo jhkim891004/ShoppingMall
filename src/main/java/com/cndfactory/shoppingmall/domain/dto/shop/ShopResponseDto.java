@@ -5,14 +5,14 @@ import lombok.Getter;
 
 @Getter
 public class ShopResponseDto {
+	private Long id;
 	private String shopName;
 	private String shopCode;
-	private String useYn;
 
 	@Builder
-	public ShopResponseDto(String shopName, String shopCode, String useYn) {
+	public ShopResponseDto(Long id, String shopName, String shopCode) {
+		this.id = id;
 		this.shopName = shopName;
 		this.shopCode = shopCode;
-		this.useYn = useYn;
 	}
 }

@@ -1,20 +1,19 @@
 package com.cndfactory.shoppingmall.domain.dto.shop;
 
-import lombok.Builder;
+import com.cndfactory.shoppingmall.domain.entity.shop.Shop;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
 public class ShopSaveDto {
+	private String shopCode = "";
 	private String shopName;
-	private String shopCode;
-	private String useYn;
 
-	@Builder
-	public ShopSaveDto(String shopName, String shopCode, String useYn) {
-		this.shopName = shopName;
-		this.shopCode = shopCode;
-		this.useYn = useYn;
+	public Shop toEntity() {
+		return Shop.builder()
+				.shopCode(this.shopCode)
+				.shopName(this.shopName)
+				.build();
 	}
 }

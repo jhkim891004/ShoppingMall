@@ -1,5 +1,6 @@
 package com.cndfactory.shoppingmall.domain.entity.shop;
 
+import com.cndfactory.shoppingmall.domain.dto.shop.ShopModifyDto;
 import com.cndfactory.shoppingmall.domain.dto.shop.ShopResponseDto;
 import com.cndfactory.shoppingmall.domain.entity.BaseEntity;
 import lombok.Builder;
@@ -13,27 +14,32 @@ import javax.persistence.Table;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_shop")
+@Table(name = "TB_SHOP")
 public class Shop extends BaseEntity {
-	@Column(updatable = false, unique = true)
+	@Column(unique = true)
 	private String shopCode;
 	@Column
 	private String shopName;
-	@Column
-	private String useYn;
+
+	public void updateInfo(ShopModifyDto dto) {
+		this.shopName = dto.getShopName();
+	}
+
+	public void updateShopCode(Long id) {
+		this.shopCode = String.format("SHP%09d", id);
+	}
 
 	public ShopResponseDto toDto() {
 		return ShopResponseDto.builder()
+				.id(this.getId())
 				.shopName(this.shopName)
 				.shopCode(this.shopCode)
-				.useYn(this.useYn)
 				.build();
 	}
 
 	@Builder
-	public Shop(String shopCode, String shopName, String useYn) {
+	public Shop(String shopCode, String shopName) {
 		this.shopCode = shopCode;
 		this.shopName = shopName;
-		this.useYn = useYn;
 	}
 }
