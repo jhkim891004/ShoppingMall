@@ -21,6 +21,7 @@ public class ProductRestController {
 	@GetMapping("/api/v1/products/{id}")
 	public ResponseEntity<ProductResponseDto> getOne(@PathVariable Long id) {
 		ProductResponseDto dto = productService.getOne(id);
+		// TEST
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
