@@ -141,18 +141,6 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * JWT token 이 없을 경우 발생
-	 * @param e
-	 * @return
-	 */
-	@ExceptionHandler(NoSuchJwtTokenException.class)
-	private ResponseEntity<ErrorResponse> handleNoSuchJwtTokenException(NoSuchJwtTokenException e) {
-		log.error("handleNoSuchJwtTokenException", e);
-		final ErrorResponse response = ErrorResponse.of(ErrorCode.NOT_FOUND_TOKEN);
-		return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.NOT_FOUND_TOKEN.getStatus()));
-	}
-
-	/**
 	 * 잘못된 validation 어노테이션 설정
 	 */
 	@ExceptionHandler(UnexpectedTypeException.class)

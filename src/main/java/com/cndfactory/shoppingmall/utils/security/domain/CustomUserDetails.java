@@ -2,6 +2,7 @@ package com.cndfactory.shoppingmall.utils.security.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Getter
+@NoArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
 	private String username;
@@ -23,6 +25,10 @@ public class CustomUserDetails implements UserDetails {
 	private boolean isEnabled;
 
 	private Collection<? extends GrantedAuthority> authorities;
+
+	public static CustomUserDetails setAnonymousUser() {
+		return new CustomUserDetails();
+	}
 
 	@Builder
 	public CustomUserDetails(String username, String password, 

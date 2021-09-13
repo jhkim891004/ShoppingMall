@@ -1,16 +1,10 @@
 package com.cndfactory.shoppingmall.utils.security.token;
 
-import com.cndfactory.shoppingmall.utils.exception.BusinessException;
-import com.cndfactory.shoppingmall.utils.exception.CustomExpiredJwtException;
-import com.cndfactory.shoppingmall.utils.exception.NoSuchJwtTokenException;
 import com.cndfactory.shoppingmall.utils.response.ErrorCode;
 import com.cndfactory.shoppingmall.utils.security.domain.CustomUserDetails;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -32,8 +25,8 @@ public class JwtTokenProvider {
 	@Value("${jwt.token.header}")
 	private String header;
 
-	private static final long ACCESS_TOKEN_VALID_TIME = 5 * 60 * 1000L;
-	private static final long REFRESH_TOKEN_VALID_TIME = 60 * 60 * 24 * 7 * 1000L;
+	private static final long ACCESS_TOKEN_VALID_TIME = 60 * 60 * 1000L;			// 1시간
+	private static final long REFRESH_TOKEN_VALID_TIME = 60 * 60 * 24 * 7 * 1000L;	// 1주일
 
 	private final UserDetailsService userDetailsService;
 

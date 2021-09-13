@@ -5,6 +5,8 @@ import com.cndfactory.shoppingmall.domain.dto.member.MemberSaveDto;
 import com.cndfactory.shoppingmall.domain.dto.member.MemberUpdateDto;
 import com.cndfactory.shoppingmall.domain.entity.member.Member;
 import com.cndfactory.shoppingmall.domain.entity.member.MemberRepository;
+import com.cndfactory.shoppingmall.utils.exception.BusinessException;
+import com.cndfactory.shoppingmall.utils.response.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -65,6 +67,9 @@ public class MemberService {
 	 */
 	@Transactional
 	public MemberResponseDto save(MemberSaveDto dto) {
+		if(memberRepository.existsByMemberId(dto.getMemberId())) {
+			throw new BusinessException(ErrorCode.USERNAME_IS_EXISTS);
+		}
 		Member member = dto.toEntity();
 		member.encodePassword(passwordEncoder.encode(member.getPassword()));
 

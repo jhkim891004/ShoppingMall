@@ -19,18 +19,20 @@ public enum ErrorCode {
 	METHOD_NOT_ALLOWED(405, "E003", " Invalid Method"),
 	ENTITY_NOT_FOUND(400, "E004", " Entity Not Found"),
 	INTERNAL_SERVER_ERROR(500, "E005", "Server Error"),
+	MISSING_REQUEST_PARAM(400, "E006", "Missing Request Param"),
+	INVALID_VALID_ANNOTATION(400, "E007", "Invalid Valid Annotation"),
 
-	ACCESS_DENIED(403, "E006", "Access is Denied"),
-	EXPIRED_TOKEN(403, "E007", "Token is Expired"),
-	NOT_FOUND_TOKEN(403, "E008", "Token Not Found"),
-	INVALID_SIGNATURE(403, "E009", "Token Do Not Match"),
+	// Access
+	ACCESS_DENIED(403, "S001", "Access is Denied"),
+	EXPIRED_TOKEN(403, "S002", "Token is Expired"),
+	NOT_FOUND_TOKEN(403, "S003", "Token Not Found"),
+	INVALID_SIGNATURE(403, "S004", "Token Do Not Match"),
 
-	MISSING_REQUEST_PARAM(400, "E010", "Missing Request Param"),
-	INVALID_VALID_ANNOTATION(400, "E011", "Invalid Valid Annotation"),
 
 	// Validation
-	USERNAME_NOT_FOUND(400, "M001", "User Not Found"),
-	PASSWORD_NOT_MATCH(400, "M002", "Passwords Do Not Match"),
+	USERNAME_NOT_FOUND(400, "M001", "Member Not Found"),
+	USERNAME_IS_EXISTS(400, "M002", "MemberId is Exists"),
+	PASSWORD_NOT_MATCH(400, "M003", "Passwords Do Not Match"),
 
 
 	;

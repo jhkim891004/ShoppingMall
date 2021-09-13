@@ -17,7 +17,6 @@ public class WebAccessDeniedHandler implements AccessDeniedHandler {
 	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		ErrorCode errorCode =  ErrorCode.ACCESS_DENIED;
 		this.setResponse(response, errorCode);
-
 	}
 
 	private void setResponse(HttpServletResponse response, ErrorCode errorCode) throws IOException {

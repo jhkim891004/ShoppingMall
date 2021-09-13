@@ -33,7 +33,6 @@ public class WebAuthenticationEntryPoint implements AuthenticationEntryPoint {
 			errorCode =  ErrorCode.INVALID_SIGNATURE;
 		}
 		this.setResponse(response, errorCode);
-
 	}
 
 	private void setResponse(HttpServletResponse response, ErrorCode errorCode) throws IOException {
