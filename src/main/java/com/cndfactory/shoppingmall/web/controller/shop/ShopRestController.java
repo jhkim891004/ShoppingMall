@@ -21,6 +21,7 @@ public class ShopRestController {
 
 	@GetMapping("/api/v1/shops/{id}")
 	public ResponseEntity<ShopResponseDto> getOne(@PathVariable Long id) throws BusinessException {
+		// test1
 		return new ResponseEntity<ShopResponseDto>(shopService.getOne(id), HttpStatus.OK);
 	}
 
