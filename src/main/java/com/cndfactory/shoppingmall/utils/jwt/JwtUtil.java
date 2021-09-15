@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 import java.util.Base64;
 import java.util.Date;
 
-@Component
+//@Component
 public class JwtUtil {
 	@Value("${jwt.secure.key}")
 	private static String key;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 
 @RequiredArgsConstructor
-@Service
+//@Service
 public class RedisUtil {
 	private final StringRedisTemplate stringRedisTemplate;
 

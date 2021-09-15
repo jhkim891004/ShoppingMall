@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-@Service
+//@Service
 public class CookieUtil {
 	Cookie createCookie(String cookieName, String value) {
 		Cookie token = new Cookie(cookieName, value);
