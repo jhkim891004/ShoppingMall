@@ -28,17 +28,11 @@ public class ProductService {
 	}
 
 	public Page<ProductResponseDto> getAll(Pageable page) {
-		return productRepository.findAll(page)
-				.map(product -> {
-					return product.toDto();
-				});
+		return productRepository.findAll(page).map(product ->product.toDto());
 	}
 
 	public Page<ProductResponseDto> getAllByShop(Pageable page, Long shopId) {
-		return productRepository.findAllByShopId(page, shopId)
-				.map(product-> {
-					return product.toDto();
-				});
+		return productRepository.findAllByShopId(page, shopId).map(product-> product.toDto());
 	}
 
 	@Transactional

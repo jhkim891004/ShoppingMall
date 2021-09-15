@@ -34,13 +34,7 @@ public class MemberService {
 		Member member = memberRepository.findById(id)
 				.orElseThrow(() -> new NoSuchElementException("Not Found Member."));
 
-		MemberResponseDto responseDto = MemberResponseDto.builder()
-				.id(member.getId())
-				.memberId(member.getMemberId())
-				.authority(member.getAuthority())
-				.build();
-
-		return responseDto;
+		return member.toDto();
 	}
 
 	/**
@@ -49,13 +43,7 @@ public class MemberService {
 	 * @return
 	 */
 	public Page<MemberResponseDto> getAll(Pageable pageable) {
-		return memberRepository.findAll(pageable)
-				.map(member -> {
-					return MemberResponseDto.builder()
-							.id(member.getId())
-							.memberId(member.getMemberId())
-							.build();
-				});
+		return memberRepository.findAll(pageable).map(member -> member.toDto());
 	}
 
 	/**
@@ -71,13 +59,8 @@ public class MemberService {
 		member.encodePassword(passwordEncoder.encode(member.getPassword()));
 
 		memberRepository.save(member);
-		MemberResponseDto responseDto = MemberResponseDto.builder()
-				.id(member.getId())
-				.memberId(member.getMemberId())
-				.authority(member.getAuthority())
-				.build();
 
-		return responseDto;
+		return member.toDto();
 	}
 
 	/**

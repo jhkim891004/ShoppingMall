@@ -31,8 +31,8 @@ public class Product extends BaseEntity {
 		this.productCode = String.format("PRD%09d", id);
 	}
 
-	public void updateProductInfo(String productCode) {
-		this.productCode = productCode;
+	public void updateProductInfo(String productName) {
+		this.productName = productName;
 	}
 
 	public ProductResponseDto toDto() {
@@ -40,7 +40,6 @@ public class Product extends BaseEntity {
 				.id(this.getId())
 				.productCode(this.productCode)
 				.productName(this.productName)
-				.shop(this.shop)
 				.build();
 	}
 

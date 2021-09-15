@@ -26,10 +26,7 @@ public class ShopService {
 	}
 
 	public Page<ShopResponseDto> getAll(Pageable page) {
-		return shopRepository.findAll(page)
-				.map(shop -> {
-					return shop.toDto();
-				});
+		return shopRepository.findAll(page).map(shop -> shop.toDto());
 	}
 
 	@Transactional

@@ -1,5 +1,6 @@
 package com.cndfactory.shoppingmall.domain.entity.member;
 
+import com.cndfactory.shoppingmall.domain.dto.member.MemberResponseDto;
 import com.cndfactory.shoppingmall.domain.entity.BaseEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +31,12 @@ public class Member extends BaseEntity {
         this.password = password;
     }
 
+    public MemberResponseDto toDto() {
+        return MemberResponseDto.builder()
+                .id(this.getId())
+                .memberId(this.memberId)
+                .build();
+    }
     @Builder
     public Member(String memberId, String password, String authority) {
         this.memberId = memberId;

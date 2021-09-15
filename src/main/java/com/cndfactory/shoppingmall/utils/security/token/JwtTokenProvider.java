@@ -25,7 +25,8 @@ public class JwtTokenProvider {
 	@Value("${jwt.token.header}")
 	private String header;
 
-	private static final long ACCESS_TOKEN_VALID_TIME = 60 * 60 * 1000L;			// 1시간
+//	private static final long ACCESS_TOKEN_VALID_TIME = 60 * 60 * 1000L;			// 1시간
+	private static final long ACCESS_TOKEN_VALID_TIME = 60 * 60 * 24 * 7 * 1000L;			// 1시간
 	private static final long REFRESH_TOKEN_VALID_TIME = 60 * 60 * 24 * 7 * 1000L;	// 1주일
 
 	private final UserDetailsService userDetailsService;
